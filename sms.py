@@ -1,7 +1,16 @@
-import requests
-import time
-import os
+import sys
+import subprocess
+import importlib
 
+def install(package):
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+        print(f"Successfully installed {package}")
+    except Exception as e:
+        print(f"Failed to install {package}: {e}")
+        sys.exit(1)
+required_libraries = ['requests','random','time']
+check_libraries()
 delay = 0.1
 # Regular Colors
 BL = "\033[0;100m" # Black
